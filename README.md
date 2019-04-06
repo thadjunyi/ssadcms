@@ -19,21 +19,21 @@
 7. Add a requirements.txt file (pip freeze > requirements.txt)
 8. Add stuff to settings.py file
 	import django_heroku (top)
-	# Activate Django-Heroku. (end)
+	// Activate Django-Heroku. (end)
 	django_heroku.settings(locals()) (end)
 9. Set up the static assets by editing the settings.py
-	# Static files (CSS, JavaScript, Images)
-	# https://docs.djangoproject.com/en/1.11/howto/static-files/
+	// Static files (CSS, JavaScript, Images)
+	// https://docs.djangoproject.com/en/1.11/howto/static-files/
 	PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 	STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
 	STATIC_URL = '/static/'
 
-	# Extra lookup directories for collectstatic to find static files
+	// Extra lookup directories for collectstatic to find static files
 	STATICFILES_DIRS = (
 		os.path.join(PROJECT_ROOT, 'static'),
 	)
 
-	#  Add configuration for static files storage using whitenoise
+	//  Add configuration for static files storage using whitenoise
 	STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 10. Add whitenoise middleware at the top of the middleware list in settings.py
 	MIDDLEWARE = [
