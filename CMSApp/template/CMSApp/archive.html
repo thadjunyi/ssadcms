@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="min-height: 50%; display: flex; flex-direction: 'row'">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-11" align="center">
+                <table class="table bg-dark text-white">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Details</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for report in all_reports %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ report.name }}</td>
+                            <td>{{ report.mobile }}</td>
+                            <td>{{ report.location }} No. {{ report.unit_number }}, Singapore {{ report.postal_code }}</td>
+                            <td>{{ report.description }}</td>
+                            <td>
+                                {% ifequal report.type "FF" %}
+                                    <small class="text-danger"> <em>Fire-fighting</em> </small>
+                                {% endifequal %}
+                                {% ifequal report.type "EA" %}
+                                    <small class="text-primary"> <em>Emergency Ambulance</em> </small>
+                                {% endifequal %}
+                                {% ifequal report.type "RE" %}
+                                    <small class="text-warning"> <em>Rescue & Evacuation</em> </small>
+                                {% endifequal %}
+                                {% ifequal report.type "GL" %}
+                                    <small class="text-success"> <em>Gas Leak Control</em> </small>
+                                {% endifequal %}
+                            </td>
+                            <td>
+                                <a href="{% url 'CMSApp:detail' report.pk %}" class="btn btn-success">
+                                    Details
+                                </a>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
