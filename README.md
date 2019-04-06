@@ -17,7 +17,7 @@
 15. Add stuff to settings.py file - (import django_heroku) to the top and (# Activate Django-Heroku. \n django_heroku.settings(locals()) ) to the bottom
 16. Install gunicorn 
 17. pip freeze > requirements.txt
-18. heroku create attreyaweb (to create an app on heroku)
+18. heroku create ssadcms (to create an app on heroku)
 19. git status git commands - (git push heroku master
 20. Open up the website)
 21. Admin panel not working. heroku run bash. Migrations
