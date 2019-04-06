@@ -144,25 +144,6 @@ LOGOUT_REDIRECT_URL = '/'
 
 CSRF_COOKIE_SECURE = True
 
-from celery.schedules import crontab
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_TIMEZONE = 'Asia/Singapore'
-# Let's make things happen
-CELERY_BEAT_SCHEDULE = {
- 'send-summary-every-hour': {
-       'task': 'summary',
-        # There are 4 ways we can handle time, read further
-       'schedule': 10,
-        # If you're using any arguments
-       'args': ('We don’t need any'),
-    },
-    # Executes every Friday at 4pm
-    'send-notification-on-friday-afternoon': {
-         'task': 'scheduler.tasks.send_notification',
-         'schedule': crontab(hour=16, day_of_week=5),
-        },
-}
-
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
