@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
+import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -146,3 +147,6 @@ CELERY_BEAT_SCHEDULE = {
          'schedule': crontab(hour=16, day_of_week=5),
         },
 }
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
