@@ -34,7 +34,7 @@ def home(request):
     return render(request,"CMSApp/home.html", {'report_list' : report_list, 'center' : center, 'markers' : markers, 'haze': haze, 'dengue':dengue})
 
 
-
+@login_required
 def input(request):
     if request.method == "GET":
         return render(request, "CMSApp/input.html")
