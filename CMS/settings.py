@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'CMSApp',
     'authentication',
-    'scheduler'
+    'scheduler',
+    'herokuapp',
 ]
 
 MIDDLEWARE = [
