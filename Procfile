@@ -1,1 +1,1 @@
-web: gunicorn ssadcms.wsgi
+web: gunicorn CMS.wsgi
