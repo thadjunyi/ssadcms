@@ -1,11 +1,11 @@
 # Software System Analysis and Design Crisis Management System
 
 # Creating a Django Project and run it locally
-1. Create a virtual environment (virutalenv venv) and enter the venv (activate)
-2. Install packages in the newly created environment (pip install django, requests)
-3. Creating the application 
-4. python manage.py startapp herokuapp
-5. Add 'herokuapp' to installed apps in settings.py
+1. Install virtual environment (pip install virutalenv)
+2. Create virtual environment (virtual venv)
+3. Go to scripts (cd venv/Scripts)
+4. Activate virtual environment (activate)
+5. Install dependencies (pip install -r requirements.txt) in ssadcms folder
 6. Migrate the database (python manage.py migrate)
 7. Start the development server (python manage.py runserver)
 
