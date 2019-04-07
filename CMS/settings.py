@@ -30,7 +30,7 @@ if PROD:
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['CMS.herokuapp.com']
+ALLOWED_HOSTS = ['ssadcms.herokuapp.com']
 
 # Application definition
 

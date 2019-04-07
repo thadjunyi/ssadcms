@@ -50,12 +50,12 @@
 	import dj_database_url 
 	prod_db  =  dj_database_url.config(conn_max_age=500)
 	DATABASES['default'].update(prod_db)
-12. Create application in Heroku from terminal (heroku create CMS)
+12. Create application in Heroku from terminal (heroku create ssadcms)
 13. Add your app domain name to ALLOWED_HOSTS in settings.py
-	ALLOWED_HOSTS = ['CMS.herokuapp.com']
+	ALLOWED_HOSTS = ['ssadcms.herokuapp.com']
 14. Initialize Git and connect your new app (or exiting one) to Heroku Git remote repository 
 	git init
-	heroku git:remote -a CMS
+	heroku git:remote -a ssadcms
 15. Add files to the staging area and commit changes
 	git add .
 	git commit -m "Initial commit"
