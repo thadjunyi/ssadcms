@@ -59,7 +59,7 @@ def input(request):
             new_report = Report(name=name, mobile=mobile, location=location, type=type1, postal_code=postal, description=desc, unit_number=unit)
             new_report.save()
             #Sending SMS
-            sender = "+12052939421"
+            sender = "+15012094705"
             receiverAgency = ['+6596579895']
             sms = SMSAPI()
             #Hard coded this for now because sms uses twilio server which is severely limited to a number of phones
