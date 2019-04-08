@@ -2,8 +2,8 @@ from twilio.rest import Client
 
 class SMSAPI:
     def __init__(self):
-        self.account_sid ='ACde62fa9f53ae3ad3c59be0b5390c79ba'
-        self.auth_token = '7aac14b03379f9ae4746f644c0a7059c'
+        self.account_sid ='AC78f830984dab0f546591b5125785752f'
+        self.auth_token = '8ea129a7c9059dead55d8d72fee69ff6'
     def sendSMS(self, textMessage, sender, receiver):
         try:
             client = Client(self.account_sid, self.auth_token)
