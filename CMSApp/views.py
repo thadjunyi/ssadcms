@@ -15,7 +15,7 @@ from .forms import CivilianForm
 # Create your views here.
 
 def home(request):
-    report_list = Report.objects.all().filter().order_by("time")[:5:-1]
+    report_list = Report.objects.all().filter().order_by("time")[:10:-1]
     try:
         postal = request.GET["postal"]
         center = get_latlng(postal)
