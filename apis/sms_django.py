@@ -48,7 +48,7 @@ class SMSAPI:
         
         
 if __name__ == "__main__":
-    sender = '+12052939421'
+    sender = '+15012094705'
     receiverAgency = ['+6584012250']
     django_dict = {'Type': "Gas Leak", "Description":"This is a description",
 "Location":"Pasir Ris", "name": "Tan Jun En", "mobile": "+6596579895","postal":"650394"}
