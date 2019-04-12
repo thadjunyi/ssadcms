@@ -173,11 +173,10 @@ def mass_message(request):
         server = EmailSend.startServer()
         mail = EmailSend()
         for people in region_civ_data:
+            print(people.email)
             #send email to people.email using subject and message
-            try:
-                mail.send_email(server, people.email,message,subject)
-            except:
-                continue
+            mail.send_email(server, [people.email],message,subject)
+        EmailSend.quitServer(server)
         return HttpResponseRedirect(reverse('CMSApp:home'))
     else:
         return render(request, "CMSApp/mass_message.html", {})
