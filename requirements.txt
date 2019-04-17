@@ -19,6 +19,7 @@ idna==2.8
 idna-ssl==1.1.0
 kombu==4.5.0
 multidict==4.5.2
+mysqlclient==1.4.2.post1
 oauthlib==3.0.1
 psycopg2==2.8
 PyJWT==1.7.1

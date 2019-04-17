@@ -35,13 +35,13 @@ ALLOWED_HOSTS = ['ssadcms.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'CMSApp.apps.CmsappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'CMSApp',
     'authentication',
     'scheduler',
 ]
@@ -81,12 +81,24 @@ WSGI_APPLICATION = 'CMS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 # TODO: branching database for deployment
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if PROD:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'AcltldvXMH',
+            'USER': 'AcltldvXMH',
+            'PASSWORD': 'xVnGHfsWjn',
+            'HOST': 'remotemysql.com',
+            'PORT': '3306',
+        }
+    }    
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
 
 
 # Password validation
