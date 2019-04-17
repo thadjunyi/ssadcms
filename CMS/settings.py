@@ -23,6 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '(f_nc#44!)@th(&dn%%kriqh6rc-$_9=11=ln@=$ra+(qzn5p9'
 
+# SECURITY WARNING: don't run with debug turned on in production!
+PROD = os.getenv('PROD', False)
+if PROD:
+    DEBUG = False
+else:
+    DEBUG = True
+
 ALLOWED_HOSTS = ['ssadcms.herokuapp.com']
 
 # Application definition
@@ -70,19 +77,29 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'CMS.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 # TODO: branching database for deployment
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'AcltldvXMH',
-        'USER': 'AcltldvXMH',
-        'PASSWORD': 'xVnGHfsWjn',
-        'HOST': 'remotemysql.com',
-        'PORT': '3306',
+if PROD:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'AcltldvXMH',
+            'USER': 'AcltldvXMH',
+            'PASSWORD': 'xVnGHfsWjn',
+            'HOST': 'remotemysql.com',
+            'PORT': '3306',
+        }
+    }    
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}    
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
