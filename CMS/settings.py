@@ -26,7 +26,7 @@ SECRET_KEY = '(f_nc#44!)@th(&dn%%kriqh6rc-$_9=11=ln@=$ra+(qzn5p9'
 # SECURITY WARNING: don't run with debug turned on in production!
 # PROD = os.getenv('PROD', False)
 PROD = False
-if 'YOUR_ENV_VAR' in os.environ:
+if 'DYNO' in os.environ:
     PROD = True
     
 if PROD:
