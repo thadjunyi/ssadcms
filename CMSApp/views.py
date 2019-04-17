@@ -1,5 +1,6 @@
 import json
 import urllib.request as ur
+import pyrebase
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -79,13 +80,19 @@ def archive(request):
     all_reports = Report.objects.all()
     return render(request, "CMSApp/archive.html", {'all_reports': all_reports})
 
-
 def get_server_data():
-    url = 'https://api-scheduler.herokuapp.com/'
-    url_parser = ur.urlopen(ur.Request(url))
-    info = url_parser.read()
-    json_dict = json.loads(info.decode('utf-8'))
-    return json_dict
+    config = {
+      "apiKey": "",
+      "authDomain": "",
+      "databaseURL": "https://data-storage-1205f.firebaseio.com/",
+      "storageBucket": ""
+    }
+    firebase = pyrebase.initialize_app(config)
+    db = firebase.database()
+    dengue_data = dict(db.child("Dengue_Data").get().val())['polygon_data']
+    haze_data = dict(db.child("Haze_Data").get().val())
+    cd_data = dict(db.child("CD_Data").get().val())['Data']
+    return {"data_haze":haze_data, "data_dengue":dengue_data, "data_cdshelter":cd_data}
 
 def get_cd_shelter(dict):
     if dict=={}:
