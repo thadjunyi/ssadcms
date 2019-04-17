@@ -17,7 +17,7 @@ from .forms import CivilianForm
 # Create your views here.
 
 def home(request):
-    report_list = Report.objects.all().filter().order_by("time")[:5:-1]
+    report_list = Report.objects.all().filter().order_by("-time")[:5:-1]
     try:
         postal = request.GET["postal"]
         center = get_latlng(postal)
@@ -93,6 +93,8 @@ def get_server_data():
     haze_data = dict(db.child("Haze_Data").get().val())
     cd_data = dict(db.child("CD_Data").get().val())['Data']
     return {"data_haze":haze_data, "data_dengue":dengue_data, "data_cdshelter":cd_data}
+
+print(get_server_data())
 
 def get_cd_shelter(dict):
     if dict=={}:
