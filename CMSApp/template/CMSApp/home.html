@@ -256,7 +256,6 @@
         
         <div class="col-sm">
             <ul class="nav nav-pills nav-stacked anyClass" style="width: 80%;">
-				{% csrf_token %}
                 {% for report in report_list %}
                 <li class="nav-item" style="width: 100%;">
                 <a href="{% url 'CMSApp:home' %}?postal={{ report.postal_code }}" class="bg-dark text-white list-group-item list-group-item-action" style="width: 95%;">
