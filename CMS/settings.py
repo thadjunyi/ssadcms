@@ -24,8 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(f_nc#44!)@th(&dn%%kriqh6rc-$_9=11=ln@=$ra+(qzn5p9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# PROD = os.getenv('PROD', False)
-PROD = True
+PROD = os.getenv('PROD', False)
+# PROD = True
     
 if PROD:
     DEBUG = False
