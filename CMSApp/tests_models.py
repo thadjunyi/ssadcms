@@ -15,15 +15,3 @@ class ReportFireTestCase(TestCase):
     def test_correct_data_submission(self):
         crisis=Report.objects.get(name="Justin")
         self.assertEqual(crisis.postal_code, "640850")
-
-class CivilianDataTest(TestCase):
-    def setUp(self):
-        CivilianData.objects.create(nric="S9712345A", name="Jason", region="NORTH-EAST", mobile="85007341", email="jason@ntu.com")
-
-    def tearDown(self):
-        c=CivilianData.objects.get(nric="S9712345A")
-        c.delete()
-
-    def test_correct_data_submission(self):
-        cvdata=CivilianData.objects.get(nric="S9712345A")
-        self.assertEqual(cvdata.name, "Jason")
