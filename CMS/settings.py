@@ -32,7 +32,7 @@ if PROD:
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['ssadcms.herokuapp.com']
+ALLOWED_HOSTS = ['ssadcms.herokuapp.com', '3.1.194.234', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -161,7 +161,6 @@ CSRF_COOKIE_SECURE = True
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
-
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
