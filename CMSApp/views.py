@@ -16,7 +16,7 @@ from .forms import CivilianForm
 tz = pytz.timezone('Asia/Singapore')
 # Create your views here.
 def home(request):
-    report_list = Report.objects.all().filter().order_by("-time")[:10:-1]
+    report_list = Report.objects.all().filter().exclude(resolved=1).order_by("-time")[:10:1]
     # report_list = report_list[0:min(len(report_list), 10)]
     try:
         postal = request.GET["postal"]
