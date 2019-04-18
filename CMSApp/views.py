@@ -83,7 +83,7 @@ def detail(request, report_pk):
 
 @login_required
 def archive(request):
-    all_reports = Report.objects.all()
+    all_reports = Report.objects.all().filter().order_by("-time")[::-1]
     return render(request, "CMSApp/archive.html", {'all_reports': all_reports})
 
 def get_server_data():
