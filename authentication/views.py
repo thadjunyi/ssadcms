@@ -10,12 +10,12 @@ from django.http import HttpResponseRedirect, HttpResponse
 from .decorator import user_is_staff
 # Create your views here.
 
-# @user_passes_test(user_is_staff)
+@user_passes_test(user_is_staff)
 def manage_dashboard(request):
     user = User.objects.all()
     return render(request, "registration/manage_dashboard.html", {"users": user})
 
-# @user_passes_test(user_is_staff)
+@user_passes_test(user_is_staff)
 def signup(request):
     if request.method == 'POST':
         form = CreateAccountForm(request.POST)
@@ -30,7 +30,7 @@ def signup(request):
         form = CreateAccountForm()
     return render(request, 'registration/signup.html', {'form': form})
 
-# @user_passes_test(user_is_staff)
+@user_passes_test(user_is_staff)
 def delete_account(request, user_pk):
     user = get_object_or_404(User, pk=user_pk)
     if request.method == 'POST':
@@ -40,7 +40,7 @@ def delete_account(request, user_pk):
         user = get_object_or_404(User, pk=user_pk)
         return render(request, 'registration/delete.html', {'user' : user})
 
-# @user_passes_test(user_is_staff)
+@user_passes_test(user_is_staff)
 def reset_password(request, user_pk):
     user = get_object_or_404(User, pk=user_pk)
     if request.method == 'POST':
@@ -53,12 +53,12 @@ def reset_password(request, user_pk):
         user = get_object_or_404(User, pk=user_pk)
         return render(request, 'registration/resetpwd.html', {'user': user})
 
-# @login_required
+@login_required
 def profile(request):
     user = get_object_or_404(User, pk=request.user.pk)
     return render(request, 'registration/profile.html')
 
-# @login_required
+@login_required
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)

@@ -39,7 +39,7 @@ def home(request):
     return render(request,"CMSApp/home.html", {'report_list' : report_list, 'center' : center, 'markers' : markers, 'haze': haze, 'dengue':dengue, 'cds': cds})
 
 
-# @login_required
+@login_required
 def input(request):
     if request.method == "GET":
         return render(request, "CMSApp/input.html")
@@ -82,7 +82,7 @@ def detail(request, report_pk):
     return render(request, "CMSApp/detail.html", {"report":report})
 
 
-# @login_required
+@login_required
 def archive(request):
     all_reports = Report.objects.all().filter().order_by("-time")
     return render(request, "CMSApp/archive.html", {'all_reports': all_reports})
@@ -126,12 +126,12 @@ def get_dengue_data(dict):
     else:
         return dict["Dengue_Data"]['polygon_data']
 
-# @login_required
+@login_required
 def manage_public(request):
     civ_list = CivilianData.objects.all()
     return render(request, "CMSApp/manage_civ.html", {'civ_list' : civ_list})
 
-# @login_required
+@login_required
 def add_public(request):
     form = CivilianForm()
     if request.method == "POST":
@@ -144,7 +144,7 @@ def add_public(request):
     else:
         return render(request, "CMSApp/add_civ.html", {'form': form})
 
-# @login_required
+@login_required
 def del_public(request, civ_pk):
     civ_data = get_object_or_404(CivilianData, pk=civ_pk)
     if request.method == "POST":
@@ -153,7 +153,7 @@ def del_public(request, civ_pk):
     else:
         return render(request, "CMSApp/del_civ.html", {'civ' : civ_data})
 
-# @login_required
+@login_required
 def resolve(request, report_pk):
     report = get_object_or_404(Report, pk=report_pk)
     report.resolved = True
@@ -164,7 +164,7 @@ def resolve(request, report_pk):
 # reference: https://stackoverflow.com/questions/311188/how-do-i-edit-and-delete-data-in-django
 # possible better alternative: CivilianData._do_update
 # possible better alternative: civ.update_civ_data()
-# @login_required
+@login_required
 def update_public(request, civ_pk):
     civ_data = get_object_or_404(CivilianData, pk=civ_pk)
     # following code runs if no exception
@@ -182,7 +182,7 @@ def update_public(request, civ_pk):
         form = CivilianForm(instance=civ_data)
         return render(request, "CMSApp/update_civ.html", {'civ': civ_data})
 
-# @login_required
+@login_required
 def mass_message(request):
     if request.method == "POST":
         #Send a mass Email out
