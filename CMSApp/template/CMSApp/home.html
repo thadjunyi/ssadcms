@@ -48,7 +48,6 @@
                     <div id="myMap"></div>
                     <div style="height:2px;">&nbsp;</div>
                 </div>
-            
             <script>
                         var map;
                         var markers = {{ markers|safe }};
@@ -257,6 +256,7 @@
         
         <div class="col-sm">
             <ul class="nav nav-pills nav-stacked anyClass" style="width: 80%;">
+				{% csrf_token %}
                 {% for report in report_list %}
                 <li class="nav-item" style="width: 100%;">
                 <a href="{% url 'CMSApp:home' %}?postal={{ report.postal_code }}" class="bg-dark text-white list-group-item list-group-item-action" style="width: 95%;">
