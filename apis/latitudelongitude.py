@@ -33,7 +33,7 @@ def get_latlng(postal_code):
 
 def get_latlng_onemap(postal_code):
     
-    latitude_longitude = {"lat" : "NA", "lng" : "NA"} #repetition of code
+    latitude_longitude = {"lat" : "zzz", "lng" : "zzz"} #repetition of code
     
     # refer to OneMap API documentation for format
     response = requests.get("https://developers.onemap.sg/commonapi/search?searchVal=" +
