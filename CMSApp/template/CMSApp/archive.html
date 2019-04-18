@@ -29,7 +29,7 @@
                         <tbody>
                         {% for report in all_reports %}
                             <tr>
-                                <th scope="row">{{ forloop.counter }}</th>
+                                <th scope="row">{{ all_reports.length - forloop.counter0 }}</th>
                                 <td>{{ report.name }}</td>
                                 <td>{{ report.mobile }}</td>
                                 <td>{{ report.location }} No. {{ report.unit_number }}, Singapore {{ report.postal_code }}</td>
