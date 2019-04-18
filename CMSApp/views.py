@@ -16,8 +16,8 @@ from .forms import CivilianForm
 tz = pytz.timezone('Asia/Singapore')
 # Create your views here.
 def home(request):
-    report_list = Report.objects.all().filter().exclude(resolved=1).order_by("-time")[:10:1]
-    # report_list = report_list[0:min(len(report_list), 10)]
+    report_list = Report.objects.all().filter().order_by("time")[::-1]
+    report_list = report_list[0:min(len(report_list), 20)]
     try:
         postal = request.GET["postal"]
         center = get_latlng(postal)
@@ -83,8 +83,9 @@ def detail(request, report_pk):
 
 @login_required
 def archive(request):
-    all_reports = Report.objects.all().filter().order_by("-time")
+    all_reports = Report.objects.all()
     return render(request, "CMSApp/archive.html", {'all_reports': all_reports})
+
 
 def get_server_data():
     config = {
@@ -123,7 +124,7 @@ def get_dengue_data(dict):
     if dict=={}:
         return {}
     else:
-        return dict["Dengue_Data"]['polygon_data']
+        return dict["Dengue_Data"]["polygon_data"]
 
 @login_required
 def manage_public(request):
@@ -186,7 +187,7 @@ def mass_message(request):
     if request.method == "POST":
         #Send a mass Email out
         subject = request.POST["subject"]
-        message = request.POST["message"]
+        message = request.POST["messge"]
         region = request.POST["region"]
         region_civ_data = CivilianData.objects.filter(region__exact=region)
         server = EmailSend.startServer()
