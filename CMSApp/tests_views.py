@@ -2,20 +2,20 @@ from django.test import TestCase
 from django.urls import reverse
 from django.test import Client
 from django.urls import resolve
-import CMSApp.views as cv
+from CMSApp.views import *
 
 class ViewURLsTest(TestCase):
     def test_home_pass(self):
-        expected = cv.home
+        expected = home
         found = resolve('/')
         self.assertEqual(found.func, expected)
 
     def test_input_pass(self):
-        expected = cv.input
+        expected = input
         found = resolve('/input/')
         self.assertEqual(found.func, expected)
         
     def test_archive_pass(self):
-        expected = cv.archive
+        expected = archive
         found = resolve('/archive/')
         self.assertEqual(found.func, expected)
