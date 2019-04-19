@@ -6,7 +6,10 @@ from authentication import *
 
 class ReportFireTestCase(TestCase):
     def setUp(self):
-        Report.objects.create(name="Justin", mobile="85007341", location="850 Jurong West Street 81", unit_number="#02-02", postal_code="640850", description="Fire broke out at my kitchen", type="EA")
+        Report.objects.create(name="Justin", mobile="85007341", location="850 Jurong West Street 81", unit_number="#02-02", postal_code="640850", lng='NA', lat='NA', description="Fire broke out at my kitchen", type="EA")
+        url = reverse('CMSApp:detail', kwargs={'report_pk': 1})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
 
     def tearDown(self):
         c=Report.objects.get(name="Justin")
