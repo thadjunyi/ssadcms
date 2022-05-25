@@ -31,7 +31,7 @@ psycopg2==2.8
 pyasn1==0.4.5
 pyasn1-modules==0.2.4
 pycryptodome==3.4.3
-PyJWT==1.7.1
+PyJWT==2.4.0
 Pyrebase==3.0.27
 PySocks==1.6.8
 python-dateutil==1.5
